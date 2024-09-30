@@ -181,13 +181,13 @@ utterances:
     repo: mzlogin/blog-comments
 # beaudar 配置参考：https://beaudar.lipk.org/
 beaudar:
-    repo: mzlogin/blog-comments
+    repo: KevinRunzhi/KevinRunzhi.github.iO
 # giscus 配置参考：https://giscus.app/zh-CN
 giscus:
-    repo: mzlogin/blog-comments
-    repo-id: MDEwOlJlcG9zaXRvcnk5MzEyNzkxNw==
-    category: Announcements
-    category-id: DIC_kwDOBY0E7c4CRtg9
+    repo: 
+    repo-id: R_kgDOM5RC-Q
+    category: Q&A
+    category-id: DIC_kwDOM5RC-c4Ci7B7
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
