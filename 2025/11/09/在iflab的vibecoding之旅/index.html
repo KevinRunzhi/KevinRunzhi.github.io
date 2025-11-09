@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="在iflab的vibecoding之旅一、初识前​    第一次接触ai开发是在小学期，上曾老师的开源软件开发课，当时课上介绍了使用VScode的cline接deepseek的api来开发，初步领略了ai的能力，感觉到ai能帮自己快速实现一些设想，不需要从零开始学起。但是当时主导开发的是另一个同学，我只负责开发一部分，因为那个时候模型能力还不够强，很久都跑不成功，还没能体会到vibe的魅力。这个学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在iflab的vibecoding之旅">
+<meta property="og:url" content="http://example.com/2025/11/09/%E5%9C%A8iflab%E7%9A%84vibecoding%E4%B9%8B%E6%97%85/index.html">
+<meta property="og:site_name" content="KevinRunzhi">
+<meta property="og:description" content="在iflab的vibecoding之旅一、初识前​    第一次接触ai开发是在小学期，上曾老师的开源软件开发课，当时课上介绍了使用VScode的cline接deepseek的api来开发，初步领略了ai的能力，感觉到ai能帮自己快速实现一些设想，不需要从零开始学起。但是当时主导开发的是另一个同学，我只负责开发一部分，因为那个时候模型能力还不够强，很久都跑不成功，还没能体会到vibe的魅力。这个学">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134547_123_373.jpg">
+<meta property="og:image" content="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134550_126_373.jpg">
+<meta property="og:image" content="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134548_124_373.jpg">
+<meta property="og:image" content="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134549_125_373.jpg">
+<meta property="og:image" content="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134552_128_373.jpg">
+<meta property="og:image" content="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134621_129_373.jpg">
+<meta property="article:published_time" content="2025-11-09T06:07:46.000Z">
+<meta property="article:modified_time" content="2025-11-09T06:08:55.524Z">
+<meta property="article:author" content="Kevin.Zheng">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134547_123_373.jpg">
+
+
+<link rel="canonical" href="http://example.com/2025/11/09/%E5%9C%A8iflab%E7%9A%84vibecoding%E4%B9%8B%E6%97%85/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/11/09/%E5%9C%A8iflab%E7%9A%84vibecoding%E4%B9%8B%E6%97%85/","path":"2025/11/09/在iflab的vibecoding之旅/","title":"在iflab的vibecoding之旅"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>在iflab的vibecoding之旅 | KevinRunzhi</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">KevinRunzhi</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8iflab%E7%9A%84vibecoding%E4%B9%8B%E6%97%85"><span class="nav-number">1.</span> <span class="nav-text">在iflab的vibecoding之旅</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%88%9D%E8%AF%86%E5%89%8D"><span class="nav-number">1.1.</span> <span class="nav-text">一、初识前</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81-%E6%8E%A5%E8%A7%A6%E4%B8%AD"><span class="nav-number">1.2.</span> <span class="nav-text">二、 接触中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%94%B6%E8%8E%B7%E4%B8%8E%E6%84%9F%E6%82%9F"><span class="nav-number">1.3.</span> <span class="nav-text">三、收获与感悟</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%94%B6%E8%8E%B7"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.收获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%84%9F%E6%82%9F"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.感悟</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Kevin.Zheng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/11/09/%E5%9C%A8iflab%E7%9A%84vibecoding%E4%B9%8B%E6%97%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Kevin.Zheng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KevinRunzhi">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="在iflab的vibecoding之旅 | KevinRunzhi">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在iflab的vibecoding之旅
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-11-09 14:07:46 / 修改时间：14:08:55" itemprop="dateCreated datePublished" datetime="2025-11-09T14:07:46+08:00">2025-11-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="在iflab的vibecoding之旅"><a href="#在iflab的vibecoding之旅" class="headerlink" title="在iflab的vibecoding之旅"></a>在iflab的vibecoding之旅</h1><h2 id="一、初识前"><a href="#一、初识前" class="headerlink" title="一、初识前"></a>一、初识前</h2><p>​    第一次接触ai开发是在小学期，上曾老师的开源软件开发课，当时课上介绍了使用VScode的cline接deepseek的api来开发，初步领略了ai的能力，感觉到ai能帮自己快速实现一些设想，不需要从零开始学起。但是当时主导开发的是另一个同学，我只负责开发一部分，因为那个时候模型能力还不够强，很久都跑不成功，还没能体会到vibe的魅力。这个学期看到社团提供机会来尝试，刚开始还有点犹豫，后面听说很好玩，于是就报名参加了</p>
+<h2 id="二、-接触中"><a href="#二、-接触中" class="headerlink" title="二、 接触中"></a>二、 接触中</h2><p>​    刚开始，我在配环境的过程中遇到了很多问题，幸好有罗林同学和李佳澎同学的帮助，我安装了wsl和Ubuntu双系统。由于自己没有找到一个很好的做计划的软件，就想自己做一个小程序。但是刚开始的时候只知道自己一点点提要求，然后让他去修改我的程序，结果我的小程序后面变成了一坨屎山代码，碰到bug会很难修复。后面了解到应该先写好文档，再喂给模型生成代码。</p>
+<p><img src="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134547_123_373.jpg" alt="微信图片_20251109134547_123_373" style="zoom: 25%;" /></p>
+<p><img src="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134550_126_373.jpg" alt="微信图片_20251109134550_126_373" style="zoom:25%;" /></p>
+<p><img src="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134548_124_373.jpg" alt="微信图片_20251109134548_124_373" style="zoom:25%;" /></p>
+<p><img src="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134549_125_373.jpg" style="zoom:25%;" /></p>
+<p>​    后面在曾老师的鼓励下参加了Waytoagi的黑客松AI切磋大会，在比赛上学习到了更多vibecoding技巧和与大模型交流的技巧，认识了不同领域的各种大佬，参会的人来自各行各业，通过自己发现行业的痛点，经过vibecoing节约自己学习和开发的时间成本，做出来很多项目，让我意识到：居然还可以用vibe这样。感觉打开了不少自己的眼界</p>
+<p><img src="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134552_128_373.jpg" alt="微信图片_20251109134552_128_373" style="zoom:25%;" /></p>
+<p><img src="https://kevintypora.oss-cn-beijing.aliyuncs.com/image/%25E5%25BE%25AE%25E4%25BF%25A1%25E5%259B%25BE%25E7%2589%2587_20251109134621_129_373.jpg" alt="微信图片_20251109134621_129_373" style="zoom:25%;" /></p>
+<h2 id="三、收获与感悟"><a href="#三、收获与感悟" class="headerlink" title="三、收获与感悟"></a>三、收获与感悟</h2><h3 id="1-收获"><a href="#1-收获" class="headerlink" title="1.收获"></a>1.收获</h3><p>（1）逐步熟悉如何更好地vibecoding</p>
+<ul>
+<li>在开发一个项目之前要先花时间把需求文档和技术文档打磨好，一点点和gpt等大模型每一个细节都进行交流和修改，直到这个项目的需求和技术框架非常明确，再交给claude或者codex开发</li>
+<li>要使用github进行分支开发和版本管理，每开发一个功能就拉一个分支，一次大修改就提交PR上传仓库，利于回滚版本。</li>
+<li>可以上github上面多寻找一些小插件、mcp，让vibe过程更便利，比如CC seitch，zen mcp等可以提高效率</li>
+<li>vibe的时候跟它每次提的要求尽量少且精确</li>
+</ul>
+<p>（2）通过vibe认识了很多大佬</p>
+<ul>
+<li>在iflab进行vibe让我和社团里面的更多大佬之间更熟悉了（之前交流比较少）</li>
+<li>去参加黑客松比赛的交流环节，和各行各业的从业者与程序员建立了沟通，开拓了眼界</li>
+</ul>
+<h3 id="2-感悟"><a href="#2-感悟" class="headerlink" title="2.感悟"></a>2.感悟</h3><p>​    通过参加这个vibecoding训练营，我在vibe中找到了乐趣。以前初高中的时候自己比较排斥计算机，但是在高考后因为分数不理想听取在微软工作的姑父的建议选择了计科专业，大一一年的学习使我不抗拒代码，愿意去写和接受，但是这次vibe让我从中找到了乐趣，第一次觉得自己能做这么多东西，让我有了兴趣。真的很感谢曾老师，iflab提供这个机会让我有了这么大的改变，也感谢佳澎同学、罗林导师在我学习过程中给的指导，将来我会继续为社团做更多的事情，继续努力和大家一起进步</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/06/27/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91-github%E4%BB%93%E5%BA%93%E5%92%8C%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%BB%BA%E7%AB%8B-1/" rel="prev" title="从零开始学习开源软件开发-----github仓库和博客的建立">
+                  <i class="fa fa-angle-left"></i> 从零开始学习开源软件开发-----github仓库和博客的建立
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Kevin.Zheng</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
